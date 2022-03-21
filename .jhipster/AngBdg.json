@@ -1,0 +1,25 @@
+{
+  "applications": "*",
+  "changelogDate": "20220321084323",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ang_bdg",
+  "fields": [
+    {
+      "fieldName": "uid",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "bdgCod",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AngBdg",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

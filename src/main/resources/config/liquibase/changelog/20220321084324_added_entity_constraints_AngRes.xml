@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity AngRes.
+    -->
+    <changeSet id="20220321084324-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="bdg_uid_id"
+                                 baseTableName="ang_res"
+                                 constraintName="fk_ang_res__bdg_uid_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ang_bdg"/>
+
+        <addForeignKeyConstraint baseColumnNames="ang_res_id"
+                                 baseTableName="rel_ang_res__uid"
+                                 constraintName="fk_rel_ang_res__uid__ang_res_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ang_res"/>
+
+        <addForeignKeyConstraint baseColumnNames="uid_id"
+                                 baseTableName="rel_ang_res__uid"
+                                 constraintName="fk_rel_ang_res__uid__uid_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ang_grp"/>
+    </changeSet>
+</databaseChangeLog>
