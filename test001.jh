@@ -1,0 +1,39 @@
+entity AngBdg {
+	bdgCod String required
+}
+
+entity AngRes {
+	resCod String
+    resDsc String
+    bdg AngBdg
+    resTyp AngResTyp
+}
+
+enum AngResTyp {
+    H, M, S
+}
+
+relationship OneToOne {
+	AngRes{bdg} to AngBdg
+}
+
+entity AngGrp {
+	grpCod String
+    grpDsc String
+}
+
+relationship ManyToMany {
+	AngRes to AngGrp
+}
+// Set pagination options
+paginate AngBdg, AngGrp with infinite-scroll
+paginate AngRes with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
