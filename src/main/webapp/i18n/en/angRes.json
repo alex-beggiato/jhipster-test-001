@@ -1,0 +1,30 @@
+{
+  "jhipsterTest001App": {
+    "angRes": {
+      "home": {
+        "title": "Ang Res",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ang Res",
+        "createOrEditLabel": "Create or edit a Ang Res",
+        "notFound": "No Ang Res found"
+      },
+      "created": "A new Ang Res is created with identifier {{ param }}",
+      "updated": "A Ang Res is updated with identifier {{ param }}",
+      "deleted": "A Ang Res is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ang Res {{ id }}?"
+      },
+      "detail": {
+        "title": "Ang Res"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "resCod": "Res Cod",
+      "resDsc": "Res Dsc",
+      "bdgUid": "Bdg Uid",
+      "resTyp": "Res Typ",
+      "bdgUid": "Bdg Uid",
+      "uid": "Uid"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="angRes">
+      <h2 data-cy="angResDetailsHeading"><span jhiTranslate="jhipsterTest001App.angRes.detail.title">Ang Res</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ angRes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.uid">Uid</span></dt>
+        <dd>
+          <span>{{ angRes.uid }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.resCod">Res Cod</span></dt>
+        <dd>
+          <span>{{ angRes.resCod }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.resDsc">Res Dsc</span></dt>
+        <dd>
+          <span>{{ angRes.resDsc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.bdgUid">Bdg Uid</span></dt>
+        <dd>
+          <span>{{ angRes.bdgUid }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.resTyp">Res Typ</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterTest001App.AngResTyp.' + angRes.resTyp }}">{{ angRes.resTyp }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.bdgUid">Bdg Uid</span></dt>
+        <dd>
+          <div *ngIf="angRes.bdgUid">
+            <a [routerLink]="['/ang-bdg', angRes.bdgUid?.id, 'view']">{{ angRes.bdgUid?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterTest001App.angRes.uid">Uid</span></dt>
+        <dd>
+          <span *ngFor="let uid of angRes.uids; let last = last">
+            <a [routerLink]="['/ang-grp', uid?.id, 'view']">{{ uid.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ang-res', angRes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

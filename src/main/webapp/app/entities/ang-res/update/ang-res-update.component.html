@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ang-res-heading" data-cy="AngResCreateUpdateHeading" jhiTranslate="jhipsterTest001App.angRes.home.createOrEditLabel">
+        Create or edit a Ang Res
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.resCod" for="field_resCod">Res Cod</label>
+          <input type="text" class="form-control" name="resCod" id="field_resCod" data-cy="resCod" formControlName="resCod" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.resDsc" for="field_resDsc">Res Dsc</label>
+          <input type="text" class="form-control" name="resDsc" id="field_resDsc" data-cy="resDsc" formControlName="resDsc" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.bdgUid" for="field_bdgUid">Bdg Uid</label>
+          <input type="number" class="form-control" name="bdgUid" id="field_bdgUid" data-cy="bdgUid" formControlName="bdgUid" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.resTyp" for="field_resTyp">Res Typ</label>
+          <select class="form-control" name="resTyp" formControlName="resTyp" id="field_resTyp" data-cy="resTyp">
+            <option [ngValue]="null">{{ 'jhipsterTest001App.AngResTyp.null' | translate }}</option>
+            <option *ngFor="let angResTyp of angResTypValues" [value]="angResTyp">
+              {{ 'jhipsterTest001App.AngResTyp.' + angResTyp | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterTest001App.angRes.bdgUid" for="field_bdgUid">Bdg Uid</label>
+          <select class="form-control" id="field_bdgUid" data-cy="bdgUid" name="bdgUid" formControlName="bdgUid">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="angBdgOption.id === editForm.get('bdgUid')!.value?.id ? editForm.get('bdgUid')!.value : angBdgOption"
+              *ngFor="let angBdgOption of bdgUidsCollection; trackBy: trackAngBdgById"
+            >
+              {{ angBdgOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="jhipsterTest001App.angRes.uid" for="field_uids">Uid</label>
+          <select class="form-control" id="field_uids" data-cy="uid" multiple name="uids" formControlName="uids">
+            <option
+              [ngValue]="getSelectedAngGrp(angGrpOption, editForm.get('uids')!.value)"
+              *ngFor="let angGrpOption of angGrpsSharedCollection; trackBy: trackAngGrpById"
+            >
+              {{ angGrpOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

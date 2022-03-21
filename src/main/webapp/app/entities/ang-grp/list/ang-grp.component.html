@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="AngGrpHeading">
+    <span jhiTranslate="jhipsterTest001App.angGrp.home.title">Ang Grps</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="reset()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterTest001App.angGrp.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ang-grp"
+        [routerLink]="['/ang-grp/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterTest001App.angGrp.home.createLabel"> Create a new Ang Grp </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="angGrps?.length === 0">
+    <span jhiTranslate="jhipsterTest001App.angGrp.home.notFound">No angGrps found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="angGrps && angGrps.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="uid"><span jhiTranslate="jhipsterTest001App.angGrp.uid">Uid</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="grpCod">
+            <span jhiTranslate="jhipsterTest001App.angGrp.grpCod">Grp Cod</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="grpDsc">
+            <span jhiTranslate="jhipsterTest001App.angGrp.grpDsc">Grp Dsc</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+        <tr *ngFor="let angGrp of angGrps; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ang-grp', angGrp.id, 'view']">{{ angGrp.id }}</a>
+          </td>
+          <td>{{ angGrp.uid }}</td>
+          <td>{{ angGrp.grpCod }}</td>
+          <td>{{ angGrp.grpDsc }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/ang-grp', angGrp.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/ang-grp', angGrp.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(angGrp)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

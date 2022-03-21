@@ -1,0 +1,25 @@
+{
+  "jhipsterTest001App": {
+    "angBdg": {
+      "home": {
+        "title": "Ang Bdgs",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ang Bdg",
+        "createOrEditLabel": "Crear o editar Ang Bdg",
+        "notFound": "Ningún Ang Bdgs encontrado"
+      },
+      "created": "Un nuevo Ang Bdg ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ang Bdg ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ang Bdg ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ang Bdg {{ id }}?"
+      },
+      "detail": {
+        "title": "Ang Bdg"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "bdgCod": "Bdg Cod"
+    }
+  }
+}

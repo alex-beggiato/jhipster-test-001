@@ -1,0 +1,27 @@
+{
+  "jhipsterTest001App": {
+    "angGrp": {
+      "home": {
+        "title": "Ang Grps",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ang Grp",
+        "createOrEditLabel": "Create or edit a Ang Grp",
+        "notFound": "No Ang Grps found"
+      },
+      "created": "A new Ang Grp is created with identifier {{ param }}",
+      "updated": "A Ang Grp is updated with identifier {{ param }}",
+      "deleted": "A Ang Grp is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ang Grp {{ id }}?"
+      },
+      "detail": {
+        "title": "Ang Grp"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "grpCod": "Grp Cod",
+      "grpDsc": "Grp Dsc",
+      "uid": "Uid"
+    }
+  }
+}
